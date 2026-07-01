@@ -1,0 +1,16 @@
+#ifndef SRC_DRIVER_MODESWITCH_MODESWITCH_H_
+#define SRC_DRIVER_MODESWITCH_MODESWITCH_H_
+
+#include <stdint.h>
+#include "../../HAL/GPIO/GPIO.h"
+
+#define MODE_SWITCH_GPIO GPIOE
+#define MODE_SWITCH_PIN_0 GPIO_PIN_0
+#define MODE_SWITCH_PIN_1 GPIO_PIN_1
+#define MODE_SWITCH_PIN_2 GPIO_PIN_2
+#define MODE_SWITCH_MASK (MODE_SWITCH_PIN_0 | MODE_SWITCH_PIN_1 | MODE_SWITCH_PIN_2)
+
+void ModeSwitch_Init(void);
+uint8_t ModeSwitch_Read(void);
+
+#endif /* SRC_DRIVER_MODESWITCH_MODESWITCH_H_ */
