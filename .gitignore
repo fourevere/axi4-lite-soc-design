@@ -1,0 +1,32 @@
+# Vivado
+*.jou
+*.log
+*.str
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+.Xil/
+*.xpr
+
+# Vitis
+_ide/
+*.elf
+*.bit
+*.xsa
+
+# Simulation
+*.wlf
+*.vcd
+*.fsdb
+csrc/
+simv*
+ucli.key
+DVEfiles/
+verdiLog/
+novas.*
+
+# OS
+Thumbs.db
+.DS_Store
