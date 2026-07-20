@@ -21,7 +21,7 @@ int main()
 
     I2C_Init(I2C0);
 
-    if (SetupInterrupSystem() != XST_SUCCESS) {
+    if (SetupInterruptSystem() != XST_SUCCESS) {
         xil_printf("Interrupt setup failed\r\n");
         return -1;
     }

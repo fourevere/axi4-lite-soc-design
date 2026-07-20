@@ -160,3 +160,26 @@ UVM 시뮬레이션은 `gpio_uvm/tb/gpio_tb_top.sv`를 top으로 컴파일 후 `
 - RC522 1-byte 단위 접근 → FIFO burst 다중 byte 연속 읽기 적용 예정
 - UVM 검증 범위를 I2C/SPI 등 나머지 IP로 확장하고 regression/coverage 수집 자동화 계획
 - 카드 사용자 정보의 정적 배열 관리 → terminal 기반 런타임 등록/삭제 구조로 확장 계획
+
+---
+
+## 정오표 (Errata)
+
+프로젝트 종료 후 산출물을 재검토하면서 발견한 오류를 기록합니다. `docs/`의 보고서·일지 원본은 제출 당시 상태를 보존하며, 코드는 저장소에서 수정했습니다.
+
+**소스코드 (저장소에서 수정 완료)**
+
+- 함수명 오타 `SetupInterrupSystem()` → `SetupInterruptSystem()` (main.c / interrupt.c / interrupt.h). 완료 보고서 3.3.4절과 7.9절에는 수정 전 이름으로 인용되어 있습니다.
+- `Attendance.c`의 등록 사용자 중 타인의 실명을 "GUEST USER"로 익명화했습니다. 보고서·발표의 보드 시연 화면에 표시되는 이름과는 다를 수 있습니다.
+
+**완료 보고서 (docs/Final_Report.pdf)**
+
+- 3.1.1절 AXI4-Lite 주소 맵 표에 AXI Interrupt Controller(`axi_intc`, base `0x4120_0000`)가 누락되어 있습니다. 인터럽트 경로 설명(3.1절)에는 존재합니다.
+
+**발표자료 (제출본 PPTX 기준 — 용량 문제로 저장소에는 미포함)**
+
+- 7장 동작 모드 표에 5번째 모드인 Time Setting(SW=100)이 누락되어 있습니다. 보고서 3.2.1절과 코드(ModeManager)는 5개 모드가 맞습니다.
+- 17장 UVM 설명은 발표용으로 단순화된 것입니다. 실제 sequence는 3종 directed 테스트가 아니라 10종 시나리오(reset_default ~ random) + full regression 구조이며, monitor는 AXI 버스를 직접 샘플링하는 것이 아니라 driver가 sideband 신호로 발행한 결과를 수집합니다(보고서 5.2~5.3절의 서술이 정확합니다).
+- 20장 트러블슈팅의 "RC522 VER=0x00" 원인 설명(SS가 address/data 사이에 해제 → SS_HOLD 추가)과 보고서 7.10절의 원인 설명(SDA=SS 핀 배선 오류 → JA4 교정)은 **서로 다른 두 사건**입니다. SS_HOLD는 설계 단계에서 반영한 기능(보고서 4.5절)이고, 보드 브링업 단계의 VER=0x00은 배선 문제였습니다.
+- 10장 제목 "adress map" → "address map", 12장 UART CR 설명의 "rx_id" → "rx_ie", 21장 결론의 IP 나열에 Timer 누락(GPIO/Timer/UART/I2C/SPI 5종이 맞음).
+- 10장 우측 주소맵 요약 표에는 `axi_uartlite`(0x4060_0000)가 빠져 있습니다(좌측 Vivado 캡처에는 존재).

@@ -32,6 +32,6 @@
 void TMR_ISR(void *CallbackRef);
 void UART_ISR(void *CallbackRef);
 void I2C_ISR(void *CallbackRef);
-int SetupInterrupSystem();
+int SetupInterruptSystem();
 
 #endif /* SRC_COMMON_INTERRUPT_INTERRUPT_H_ */

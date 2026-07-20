@@ -32,7 +32,7 @@ void I2C_ISR(void *CallbackRef)
     I2C_IRQHandler(I2C0);
 }
 
-int SetupInterrupSystem()
+int SetupInterruptSystem()
 {
     int status;
 

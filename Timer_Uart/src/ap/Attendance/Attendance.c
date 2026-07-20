@@ -19,7 +19,7 @@ typedef struct {
 
 static AttendanceUser_t attendanceUsers[ATTENDANCE_USER_COUNT] = {
     {{0x2Cu, 0x3Cu, 0x3Bu, 0x06u}, "JEONG GWANGGEUN", 0u},
-    {{0xC7u, 0xDAu, 0x25u, 0x07u}, "KWON JAEWON", 0u}
+    {{0xC7u, 0xDAu, 0x25u, 0x07u}, "GUEST USER", 0u}
 };
 
 extern volatile uint8_t rx_data;
